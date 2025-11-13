@@ -65,4 +65,33 @@ public class SistemaBanco {
             System.out.println(" Una o ambas cuentas no existen.");
     }
 
+    // Mostrar todas las cuentas (ordenadas por saldo 
+    public void showAllAccountsSorted() {
+        ArrayList<Account> sortedList = new ArrayList<>(accounts);
+        *///////////
+        System.out.println("\n📋 Lista de cuentas ordenadas por saldo:");
+        for (Account a : sortedList) {
+            a.displayInfo();
+        }
+    }
+
+    // metodo para algoritmo 
+    //MergeSort
+    //QuickSort
+    //Bubble Sort
+
+
+
+    // Mostrar historial de transacciones
+    public void showHistory() {
+        System.out.println("\n📜 Historial de transacciones:");
+        if (transactionHistory.isEmpty()) {
+            System.out.println("No hay transacciones registradas.");
+        } else {
+            for (String s : transactionHistory) {
+                System.out.println(s);
+            }
+        }
+    }
+}
     
