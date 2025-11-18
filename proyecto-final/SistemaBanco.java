@@ -65,21 +65,33 @@ public class SistemaBanco {
             System.out.println(" Una o ambas cuentas no existen.");
     }
 
-    // Mostrar todas las cuentas (ordenadas por saldo 
+    // Mostrar todas las cuentas (ordenadas por saldo usando Bubble Sort)
     public void showAllAccountsSorted() {
         ArrayList<Account> sortedList = new ArrayList<>(accounts);
-        *///////////
+        bubbleSortByBalance(sortedList);
         System.out.println("\n📋 Lista de cuentas ordenadas por saldo:");
         for (Account a : sortedList) {
             a.displayInfo();
         }
     }
+
+    // Algoritmo Bubble Sort
+
+    // Mostrar todas las cuentas (ordenadas por saldo 
+    private void bubbleSortByBalance(ArrayList<Account> list) {
+        int n = list.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (list.get(j).getBalance() > list.get(j + 1).getBalance()) {
+                    Collections.swap(list, j, j + 1);
+                }
+            }
+        }
+    }
+
 // aroboles binaios
 // diagrama de clases
-    // metodo para algoritmo 
-    //MergeSort
-    //QuickSort
-    //Bubble Sort
+    
 
 
 
