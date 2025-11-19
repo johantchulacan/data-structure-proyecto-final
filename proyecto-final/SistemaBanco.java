@@ -1,28 +1,34 @@
 // Clase principal del sistema bancario
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class SistemaBanco {
     private ArrayList<Account> accounts = new ArrayList<>();
     private Stack<String> transactionHistory = new Stack<>();
+    private BinarySearchTree bst = new BinarySearchTree();
 
     // Crear nueva cuenta
     public void createAccount(int CuentaNumber, String name, double initialDeposit) {
-        if (findAccount(cuentaNumber) != null) {
+        if (bst.search(cuentaNumber) != null) {
             System.out.println(" Ya existe una cuenta con ese número.");
             return;
         }
-        accounts.add(new Account(cuentaNumber, name, initialDeposit));
+       Account acc = new Account(cuentaNumber, name, initialDeposit);
+
+        accounts.add(acc);     // Lista principal
+        bst.insert(acc);       // Insertar en el árbol BST
+
+
+
         transactionHistory.push("Cuenta creada: #" + cuentaNumber);
         System.out.println(" Cuenta creada exitosamente.");
 
     }
 
 
-    // Buscar cuenta por número (búsqueda lineal o binaria si está ordenado)
+    // Buscar cuenta por número (búsqueda  binaria si está ordenado)
     public Account findAccount(int number) {
-        for (Account acc : accounts) {
-            if (acc.getCuentaNumber() == number)
-                return acc;
-        }
-        return null;
+        return bst.search(number);
     }
 
 
@@ -69,7 +75,7 @@ public class SistemaBanco {
     public void showAllAccountsSorted() {
         ArrayList<Account> sortedList = new ArrayList<>(accounts);
         bubbleSortByBalance(sortedList);
-        System.out.println("\n📋 Lista de cuentas ordenadas por saldo:");
+        System.out.println("\n Lista de cuentas ordenadas por saldo:");
         for (Account a : sortedList) {
             a.displayInfo();
         }
@@ -97,7 +103,7 @@ public class SistemaBanco {
 
     // Mostrar historial de transacciones
     public void showHistory() {
-        System.out.println("\n📜 Historial de transacciones:");
+        System.out.println("\n Historial de transacciones:");
         if (transactionHistory.isEmpty()) {
             System.out.println("No hay transacciones registradas.");
         } else {
@@ -105,6 +111,13 @@ public class SistemaBanco {
                 System.out.println(s);
             }
         }
+    }
+
+
+    // Mostrar recorrido INORDER del árbol (cuentas ordenadas por número)
+    public void showTreeInOrder() {
+        System.out.println("\n Recorrido IN-ORDER del Árbol BST:");
+        bst.inorder();
     }
 }
     
