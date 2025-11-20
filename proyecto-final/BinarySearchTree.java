@@ -3,20 +3,20 @@ public class BinarySearchTree {
     private Node root;
 
     private class Node {
-        Account account;
+        Cuenta account;
         Node left, right;
 
-        Node(Account acc) {
+        Node(Cuenta acc) {
             this.account = acc;
         }
     }
 
 
-    public void insert(Account acc) {
+    public void insert(Cuenta acc) {
         root = insertRec(root, acc);
     }
 
-    private Node insertRec(Node node, Account acc) {
+    private Node insertRec(Node node, Cuenta acc) {
         if (node == null) return new Node(acc);
 
         if (acc.getCuentaNumber() < node.account.getCuentaNumber()) {
@@ -30,11 +30,11 @@ public class BinarySearchTree {
 
 
     // Búsqueda REAL por árbol binario
-    public Account search(int number) {
+    public Cuenta search(int number) {
         return searchRec(root, number);
     }
 
-    private Account searchRec(Node node, int number) {
+    private Cuenta searchRec(Node node, int number) {
         if (node == null) return null;
 
         if (number == node.account.getCuentaNumber())

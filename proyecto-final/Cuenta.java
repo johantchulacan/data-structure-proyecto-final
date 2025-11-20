@@ -1,5 +1,5 @@
 // Clase que representa una cuenta bancaria
-public class cuenta {
+public class Cuenta {
     private int cuentaNumber;
     private String titularName;
     private double balance;
@@ -11,7 +11,7 @@ public class cuenta {
 
     }
 
-    public int getCuentaNumber() { return CuentaNumber; }
+    public int getCuentaNumber() { return cuentaNumber; }
     public String gettitularName() { return titularName; }
     public double getBalance() { return balance; }
 

@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        BankSystem bank = new BankSystem();
+        SistemaBanco bank = new SistemaBanco();
         int option = -1;
 
         while (option != 0) {
@@ -69,7 +69,7 @@ public class Main {
             } else if (option == 8) {
                 System.out.print("Ingrese número de cuenta a buscar: ");
                 int num = sc.nextInt();
-                Account acc = bank.findAccount(num);
+                Cuenta acc = bank.findAccount(num);
 
                 if (acc != null) {
                     System.out.println("\nCuenta encontrada:");
