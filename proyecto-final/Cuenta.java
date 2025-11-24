@@ -1,8 +1,8 @@
 // Clase que representa una cuenta bancaria
 public class Cuenta {
-    private int cuentaNumber;
-    private String titularName;
-    private double balance;
+    private int cuentaNumber; // identificador único
+    private String titularName; // nombre del titular
+    private double balance; // saldo actual
 
     public Cuenta(int cuentaNumber, String titularName, double balance) {
         this.cuentaNumber = cuentaNumber;
@@ -11,6 +11,7 @@ public class Cuenta {
 
     }
 
+    // Gets normales
     public int getCuentaNumber() {
         return cuentaNumber;
     }
@@ -23,11 +24,13 @@ public class Cuenta {
         return balance;
     }
 
+    // Depositar dinero
     public void deposit(double amount) {
         if (amount > 0)
             balance += amount;
     }
 
+    // Retirar si hay saldo
     public boolean retirar(double amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
@@ -36,6 +39,7 @@ public class Cuenta {
         return false;
     }
 
+    // Mostrar información de la cuenta
     public void displayInfo() {
         System.out.printf("Cuenta #%d | Titular: %s | Saldo: %.2f%n", cuentaNumber, titularName, balance);
     }
