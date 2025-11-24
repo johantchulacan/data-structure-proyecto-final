@@ -5,21 +5,33 @@ import java.util.Collections;
 import java.util.Stack;
 
 public class SistemaBanco {
+    
+    // Lista principal de cuentas (almacenamiento general)
     private ArrayList<Cuenta> accounts = new ArrayList<>();
+    
+    // Pila para guardar el historial (LIFO)
     private Stack<String> transactionHistory = new Stack<>();
+    
+    // Árbol para hacer búsquedas rápidas y ordenar por número
     private BinarySearchTree bst = new BinarySearchTree();
 
     // Crear nueva cuenta
     public void createAccount(int cuentaNumber, String name, double initialDeposit) {
+        
+        // primero verifico si ya existe usando el árbol
         if (bst.search(cuentaNumber) != null) {
             System.out.println(" Ya existe una cuenta con ese número.");
             return;
         }
+
+        // creo la nueva cuenta
         Cuenta acc = new Cuenta(cuentaNumber, name, initialDeposit);
 
+        // la guardo en las estructuras principales
         accounts.add(acc); // Lista principal
         bst.insert(acc); // Insertar en el árbol BST
 
+        // registro en el historial
         transactionHistory.push("Cuenta creada: #" + cuentaNumber);
         System.out.println(" Cuenta creada exitosamente.");
 
@@ -58,6 +70,8 @@ public class SistemaBanco {
     public void transfer(int from, int to, double amount) {
         Cuenta acc1 = findAccount(from);
         Cuenta acc2 = findAccount(to);
+
+        // verifico que ambas existan
         if (acc1 != null && acc2 != null) {
             if (acc1.retirar(amount)) {
                 acc2.deposit(amount);
@@ -71,6 +85,8 @@ public class SistemaBanco {
 
     // Mostrar todas las cuentas (ordenadas por saldo usando Bubble Sort)
     public void showAllAccountsSorted() {
+
+        // copio la lista para no alterar el orden original
         ArrayList<Cuenta> sortedList = new ArrayList<>(accounts);
         bubbleSortByBalance(sortedList);
         System.out.println("\n Lista de cuentas ordenadas por saldo:");
@@ -79,24 +95,26 @@ public class SistemaBanco {
         }
     }
 
-    // Algoritmo Bubble Sort
+    
 
-    // Mostrar todas las cuentas (ordenadas por saldo
+    // Implementación de algoritmo bubble sort
     private void bubbleSortByBalance(ArrayList<Cuenta> list) {
         int n = list.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
+
+                // comparo dos saldos
                 if (list.get(j).getBalance() > list.get(j + 1).getBalance()) {
+                    // si están invertidos, los intercambio
                     Collections.swap(list, j, j + 1);
                 }
             }
         }
     }
 
-    // aroboles binaios
-    // diagrama de clases
+    
 
-    // Mostrar historial de transacciones
+    // Mostrar historial de transacciones 
     public void showHistory() {
         System.out.println("\n Historial de transacciones:");
         if (transactionHistory.isEmpty()) {
