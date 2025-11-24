@@ -1,3 +1,4 @@
+
 // Clase principal del sistema bancario
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,24 +15,20 @@ public class SistemaBanco {
             System.out.println(" Ya existe una cuenta con ese número.");
             return;
         }
-       Cuenta acc = new Cuenta(cuentaNumber, name, initialDeposit);
+        Cuenta acc = new Cuenta(cuentaNumber, name, initialDeposit);
 
-        accounts.add(acc);     // Lista principal
-        bst.insert(acc);       // Insertar en el árbol BST
-
-
+        accounts.add(acc); // Lista principal
+        bst.insert(acc); // Insertar en el árbol BST
 
         transactionHistory.push("Cuenta creada: #" + cuentaNumber);
         System.out.println(" Cuenta creada exitosamente.");
 
     }
 
-
-    // Buscar cuenta por número (búsqueda  binaria si está ordenado)
+    // Buscar cuenta por número (búsqueda binaria si está ordenado)
     public Cuenta findAccount(int number) {
         return bst.search(number);
     }
-
 
     // Depósito
     public void deposit(int number, double amount) {
@@ -40,9 +37,9 @@ public class SistemaBanco {
             acc.deposit(amount);
             transactionHistory.push("Depósito en #" + number + " de $" + amount);
             System.out.println(" Depósito exitoso.");
-        } else System.out.println(" Cuenta no encontrada.");
+        } else
+            System.out.println(" Cuenta no encontrada.");
     }
-
 
     // Retiro
     public void retirar(int number, double amount) {
@@ -51,9 +48,9 @@ public class SistemaBanco {
             if (acc.retirar(amount)) {
                 transactionHistory.push("Retiro en #" + number + " de $" + amount);
                 System.out.println(" Retiro exitoso.");
-            } else 
+            } else
                 System.out.println(" Saldo insuficiente.");
-        } else 
+        } else
             System.out.println(" Cuenta no encontrada.");
     }
 
@@ -66,9 +63,9 @@ public class SistemaBanco {
                 acc2.deposit(amount);
                 transactionHistory.push("Transferencia de #" + from + " a #" + to + " por $" + amount);
                 System.out.println(" Transferencia completada.");
-            } else 
+            } else
                 System.out.println(" Fondos insuficientes.");
-        } else 
+        } else
             System.out.println(" Una o ambas cuentas no existen.");
     }
 
@@ -84,7 +81,7 @@ public class SistemaBanco {
 
     // Algoritmo Bubble Sort
 
-    // Mostrar todas las cuentas (ordenadas por saldo 
+    // Mostrar todas las cuentas (ordenadas por saldo
     private void bubbleSortByBalance(ArrayList<Cuenta> list) {
         int n = list.size();
         for (int i = 0; i < n - 1; i++) {
@@ -96,11 +93,8 @@ public class SistemaBanco {
         }
     }
 
-// aroboles binaios
-// diagrama de clases
-    
-
-
+    // aroboles binaios
+    // diagrama de clases
 
     // Mostrar historial de transacciones
     public void showHistory() {
@@ -114,11 +108,9 @@ public class SistemaBanco {
         }
     }
 
-
     // Mostrar recorrido INORDER del árbol (cuentas ordenadas por número)
     public void showTreeInOrder() {
         System.out.println("\n Recorrido IN-ORDER del Árbol BST:");
         bst.inorder();
     }
 }
-    

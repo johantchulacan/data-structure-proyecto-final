@@ -1,3 +1,4 @@
+
 // Clase principal con menú usando if/else y se usa while
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class Main {
             System.out.println("4. Transferir");
             System.out.println("5. Mostrar todas las cuentas (ordenadas)");
             System.out.println("6. Ver historial de transacciones");
-             System.out.println("7. Recorrido IN-ORDER del árbol (BST)");
+            System.out.println("7. Recorrido IN-ORDER del árbol (BST)");
             System.out.println("8. Buscar cuenta usando el Árbol Binario");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
@@ -60,11 +61,10 @@ public class Main {
             } else if (option == 6) {
                 bank.showHistory();
 
-            } 
+            }
 
-             else if (option == 7) {
-                bank.showTreeInOrder();  
-            
+            else if (option == 7) {
+                bank.showTreeInOrder();
 
             } else if (option == 8) {
                 System.out.print("Ingrese número de cuenta a buscar: ");
@@ -78,8 +78,7 @@ public class Main {
                     System.out.println("No existe una cuenta con ese número.");
                 }
 
-            
-            }else if (option == 0) {
+            } else if (option == 0) {
                 System.out.println(" Saliendo del sistema...");
 
             } else {

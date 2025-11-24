@@ -11,12 +11,21 @@ public class Cuenta {
 
     }
 
-    public int getCuentaNumber() { return cuentaNumber; }
-    public String gettitularName() { return titularName; }
-    public double getBalance() { return balance; }
+    public int getCuentaNumber() {
+        return cuentaNumber;
+    }
+
+    public String getTitularName() {
+        return titularName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
 
     public void deposit(double amount) {
-        if (amount > 0) balance += amount;
+        if (amount > 0)
+            balance += amount;
     }
 
     public boolean retirar(double amount) {
