@@ -4,7 +4,7 @@ public class BinarySearchTree {
 
     // Clase interna para representar cada nodo del árbol
     private class Node {
-        Cuenta account;  // cada nodo guarda una cuenta
+        Cuenta account; // cada nodo guarda una cuenta
         Node left, right; // referencias a los nodos hijos
 
         Node(Cuenta acc) {
@@ -42,19 +42,17 @@ public class BinarySearchTree {
         if (node == null)
             return null; // no existe la cuenta
 
-
         if (number == node.account.getCuentaNumber())
             return node.account; // cuenta encontrada
 
         if (number < node.account.getCuentaNumber())
             return searchRec(node.left, number); // busco por la izquierda
 
-
         return searchRec(node.right, number); // busco por la derecha
     }
 
-    // Recorrido InOrder 
-    //  me muestra las cuentas ordenadas
+    // Recorrido InOrder
+    // me muestra las cuentas ordenadas
     public void inorder() {
         inorderRec(root);
     }

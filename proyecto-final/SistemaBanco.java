@@ -5,19 +5,19 @@ import java.util.Collections;
 import java.util.Stack;
 
 public class SistemaBanco {
-    
+
     // Lista principal de cuentas (almacenamiento general)
     private ArrayList<Cuenta> accounts = new ArrayList<>();
-    
+
     // Pila para guardar el historial (LIFO)
     private Stack<String> transactionHistory = new Stack<>();
-    
+
     // Árbol para hacer búsquedas rápidas y ordenar por número
     private BinarySearchTree bst = new BinarySearchTree();
 
     // Crear nueva cuenta
     public void createAccount(int cuentaNumber, String name, double initialDeposit) {
-        
+
         // primero verifico si ya existe usando el árbol
         if (bst.search(cuentaNumber) != null) {
             System.out.println(" Ya existe una cuenta con ese número.");
@@ -95,8 +95,6 @@ public class SistemaBanco {
         }
     }
 
-    
-
     // Implementación de algoritmo bubble sort
     private void bubbleSortByBalance(ArrayList<Cuenta> list) {
         int n = list.size();
@@ -112,9 +110,7 @@ public class SistemaBanco {
         }
     }
 
-    
-
-    // Mostrar historial de transacciones 
+    // Mostrar historial de transacciones
     public void showHistory() {
         System.out.println("\n Historial de transacciones:");
         if (transactionHistory.isEmpty()) {
