@@ -5,10 +5,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        SistemaBanco bank = new SistemaBanco();
+        SistemaBanco bank = new SistemaBanco(); // mi sistema bancario
         int option = -1;
 
         while (option != 0) {
+
+            // menú principal
             System.out.println("\n=== BANKING MANAGEMENT SYSTEM ===");
             System.out.println("1. Crear cuenta");
             System.out.println("2. Depositar");
